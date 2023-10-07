@@ -1,0 +1,624 @@
+{
+    "messageSentAtDayOfWeek": {
+        "Friday": {
+            "groupSize": 32977,
+            "numberOfClicks": 2093,
+            "numberOfConversions": 676,
+            "probabilityOfClick": 0.06346847803014222,
+            "probabilityOfConversion": 0.02049913576128817,
+            "probabilityOfConversionGivenClicked": 0.32298136645962733
+        },
+        "Monday": {
+            "groupSize": 13944,
+            "numberOfClicks": 873,
+            "numberOfConversions": 323,
+            "probabilityOfClick": 0.06260757314974183,
+            "probabilityOfConversion": 0.023164084911072864,
+            "probabilityOfConversionGivenClicked": 0.3699885452462772
+        },
+        "Thursday": {
+            "groupSize": 32863,
+            "numberOfClicks": 2131,
+            "numberOfConversions": 748,
+            "probabilityOfClick": 0.06484496241974257,
+            "probabilityOfConversion": 0.022761159967136294,
+            "probabilityOfConversionGivenClicked": 0.35100891600187706
+        },
+        "Tuesday": {
+            "groupSize": 33168,
+            "numberOfClicks": 2167,
+            "numberOfConversions": 716,
+            "probabilityOfClick": 0.06533405692233478,
+            "probabilityOfConversion": 0.021587071876507477,
+            "probabilityOfConversionGivenClicked": 0.3304107060452238
+        },
+        "Wednesday": {
+            "groupSize": 32989,
+            "numberOfClicks": 2110,
+            "numberOfConversions": 679,
+            "probabilityOfClick": 0.0639607141774531,
+            "probabilityOfConversion": 0.020582618448573765,
+            "probabilityOfConversionGivenClicked": 0.3218009478672985
+        }
+    },
+    "messageSentAtHour": {
+        "8": {
+            "groupSize": 13314,
+            "numberOfClicks": 429,
+            "numberOfConversions": 193,
+            "probabilityOfClick": 0.03222172149616945,
+            "probabilityOfConversion": 0.014496019227880427,
+            "probabilityOfConversionGivenClicked": 0.44988344988344986
+        },
+        "9": {
+            "groupSize": 31778,
+            "numberOfClicks": 2055,
+            "numberOfConversions": 642,
+            "probabilityOfClick": 0.06466737994839197,
+            "probabilityOfConversion": 0.020202655925483037,
+            "probabilityOfConversionGivenClicked": 0.31240875912408755
+        },
+        "10": {
+            "groupSize": 31664,
+            "numberOfClicks": 2080,
+            "numberOfConversions": 679,
+            "probabilityOfClick": 0.06568974229408793,
+            "probabilityOfConversion": 0.02144391106619505,
+            "probabilityOfConversionGivenClicked": 0.3264423076923077
+        },
+        "11": {
+            "groupSize": 23458,
+            "numberOfClicks": 1948,
+            "numberOfConversions": 589,
+            "probabilityOfClick": 0.08304203256884644,
+            "probabilityOfConversion": 0.025108704919430472,
+            "probabilityOfConversionGivenClicked": 0.30236139630390146
+        },
+        "12": {
+            "groupSize": 6772,
+            "numberOfClicks": 442,
+            "numberOfConversions": 140,
+            "probabilityOfClick": 0.0652687536916716,
+            "probabilityOfConversion": 0.02067336089781453,
+            "probabilityOfConversionGivenClicked": 0.3167420814479638
+        },
+        "13": {
+            "groupSize": 6905,
+            "numberOfClicks": 400,
+            "numberOfConversions": 124,
+            "probabilityOfClick": 0.05792903692976104,
+            "probabilityOfConversion": 0.017958001448225923,
+            "probabilityOfConversionGivenClicked": 0.31
+        },
+        "14": {
+            "groupSize": 6983,
+            "numberOfClicks": 409,
+            "numberOfConversions": 154,
+            "probabilityOfClick": 0.05857081483603036,
+            "probabilityOfConversion": 0.0220535586424173,
+            "probabilityOfConversionGivenClicked": 0.3765281173594132
+        },
+        "15": {
+            "groupSize": 6691,
+            "numberOfClicks": 391,
+            "numberOfConversions": 142,
+            "probabilityOfClick": 0.05843670602301599,
+            "probabilityOfConversion": 0.021222537737259003,
+            "probabilityOfConversionGivenClicked": 0.3631713554987212
+        },
+        "16": {
+            "groupSize": 6863,
+            "numberOfClicks": 403,
+            "numberOfConversions": 152,
+            "probabilityOfClick": 0.05872067608917383,
+            "probabilityOfConversion": 0.02214774879790179,
+            "probabilityOfConversionGivenClicked": 0.3771712158808933
+        },
+        "17": {
+            "groupSize": 5236,
+            "numberOfClicks": 305,
+            "numberOfConversions": 110,
+            "probabilityOfClick": 0.05825057295645531,
+            "probabilityOfConversion": 0.02100840336134454,
+            "probabilityOfConversionGivenClicked": 0.36065573770491804
+        },
+        "18": {
+            "groupSize": 3190,
+            "numberOfClicks": 255,
+            "numberOfConversions": 113,
+            "probabilityOfClick": 0.07993730407523511,
+            "probabilityOfConversion": 0.03542319749216301,
+            "probabilityOfConversionGivenClicked": 0.44313725490196076
+        },
+        "19": {
+            "groupSize": 3087,
+            "numberOfClicks": 257,
+            "numberOfConversions": 104,
+            "probabilityOfClick": 0.08325234855847101,
+            "probabilityOfConversion": 0.03368966634272757,
+            "probabilityOfConversionGivenClicked": 0.4046692607003891
+        }
+    },
+    "messageTimeWindow": {
+        "Friday_08": {
+            "groupSize": 3111,
+            "numberOfClicks": 87,
+            "numberOfConversions": 32,
+            "probabilityOfClick": 0.027965284474445518,
+            "probabilityOfConversion": 0.010286081645773062,
+            "probabilityOfConversionGivenClicked": 0.36781609195402293
+        },
+        "Friday_09": {
+            "groupSize": 7533,
+            "numberOfClicks": 503,
+            "numberOfConversions": 153,
+            "probabilityOfClick": 0.06677286605602017,
+            "probabilityOfConversion": 0.02031063321385902,
+            "probabilityOfConversionGivenClicked": 0.30417495029821073
+        },
+        "Friday_10": {
+            "groupSize": 7685,
+            "numberOfClicks": 497,
+            "numberOfConversions": 145,
+            "probabilityOfClick": 0.06467143786597268,
+            "probabilityOfConversion": 0.018867924528301886,
+            "probabilityOfConversionGivenClicked": 0.2917505030181086
+        },
+        "Friday_11": {
+            "groupSize": 5481,
+            "numberOfClicks": 459,
+            "numberOfConversions": 138,
+            "probabilityOfClick": 0.08374384236453201,
+            "probabilityOfConversion": 0.025177887246852763,
+            "probabilityOfConversionGivenClicked": 0.3006535947712418
+        },
+        "Friday_12": {
+            "groupSize": 1386,
+            "numberOfClicks": 90,
+            "numberOfConversions": 28,
+            "probabilityOfClick": 0.06493506493506493,
+            "probabilityOfConversion": 0.020202020202020204,
+            "probabilityOfConversionGivenClicked": 0.31111111111111117
+        },
+        "Friday_13": {
+            "groupSize": 1324,
+            "numberOfClicks": 77,
+            "numberOfConversions": 32,
+            "probabilityOfClick": 0.0581570996978852,
+            "probabilityOfConversion": 0.02416918429003021,
+            "probabilityOfConversionGivenClicked": 0.41558441558441556
+        },
+        "Friday_14": {
+            "groupSize": 1412,
+            "numberOfClicks": 75,
+            "numberOfConversions": 29,
+            "probabilityOfClick": 0.05311614730878187,
+            "probabilityOfConversion": 0.020538243626062325,
+            "probabilityOfConversionGivenClicked": 0.3866666666666667
+        },
+        "Friday_15": {
+            "groupSize": 1368,
+            "numberOfClicks": 72,
+            "numberOfConversions": 28,
+            "probabilityOfClick": 0.05263157894736842,
+            "probabilityOfConversion": 0.02046783625730994,
+            "probabilityOfConversionGivenClicked": 0.3888888888888889
+        },
+        "Friday_16": {
+            "groupSize": 1339,
+            "numberOfClicks": 73,
+            "numberOfConversions": 30,
+            "probabilityOfClick": 0.05451829723674384,
+            "probabilityOfConversion": 0.022404779686333084,
+            "probabilityOfConversionGivenClicked": 0.410958904109589
+        },
+        "Friday_17": {
+            "groupSize": 1062,
+            "numberOfClicks": 56,
+            "numberOfConversions": 21,
+            "probabilityOfClick": 0.05273069679849341,
+            "probabilityOfConversion": 0.01977401129943503,
+            "probabilityOfConversionGivenClicked": 0.375
+        },
+        "Friday_18": {
+            "groupSize": 636,
+            "numberOfClicks": 48,
+            "numberOfConversions": 21,
+            "probabilityOfClick": 0.07547169811320754,
+            "probabilityOfConversion": 0.0330188679245283,
+            "probabilityOfConversionGivenClicked": 0.4375
+        },
+        "Friday_19": {
+            "groupSize": 640,
+            "numberOfClicks": 56,
+            "numberOfConversions": 19,
+            "probabilityOfClick": 0.0875,
+            "probabilityOfConversion": 0.0296875,
+            "probabilityOfConversionGivenClicked": 0.3392857142857143
+        },
+        "Monday_08": {
+            "groupSize": 629,
+            "numberOfClicks": 23,
+            "numberOfConversions": 16,
+            "probabilityOfClick": 0.03656597774244833,
+            "probabilityOfConversion": 0.025437201907790145,
+            "probabilityOfConversionGivenClicked": 0.6956521739130435
+        },
+        "Monday_09": {
+            "groupSize": 1190,
+            "numberOfClicks": 70,
+            "numberOfConversions": 22,
+            "probabilityOfClick": 0.058823529411764705,
+            "probabilityOfConversion": 0.018487394957983194,
+            "probabilityOfConversionGivenClicked": 0.3142857142857143
+        },
+        "Monday_10": {
+            "groupSize": 1280,
+            "numberOfClicks": 83,
+            "numberOfConversions": 31,
+            "probabilityOfClick": 0.06484375,
+            "probabilityOfConversion": 0.02421875,
+            "probabilityOfConversionGivenClicked": 0.37349397590361444
+        },
+        "Monday_11": {
+            "groupSize": 1620,
+            "numberOfClicks": 119,
+            "numberOfConversions": 43,
+            "probabilityOfClick": 0.0734567901234568,
+            "probabilityOfConversion": 0.02654320987654321,
+            "probabilityOfConversionGivenClicked": 0.36134453781512604
+        },
+        "Monday_12": {
+            "groupSize": 1291,
+            "numberOfClicks": 79,
+            "numberOfConversions": 25,
+            "probabilityOfClick": 0.061192873741285826,
+            "probabilityOfConversion": 0.019364833462432222,
+            "probabilityOfConversionGivenClicked": 0.3164556962025316
+        },
+        "Monday_13": {
+            "groupSize": 1401,
+            "numberOfClicks": 87,
+            "numberOfConversions": 24,
+            "probabilityOfClick": 0.06209850107066381,
+            "probabilityOfConversion": 0.017130620985010708,
+            "probabilityOfConversionGivenClicked": 0.2758620689655173
+        },
+        "Monday_14": {
+            "groupSize": 1443,
+            "numberOfClicks": 84,
+            "numberOfConversions": 33,
+            "probabilityOfClick": 0.058212058212058215,
+            "probabilityOfConversion": 0.02286902286902287,
+            "probabilityOfConversionGivenClicked": 0.39285714285714285
+        },
+        "Monday_15": {
+            "groupSize": 1344,
+            "numberOfClicks": 76,
+            "numberOfConversions": 29,
+            "probabilityOfClick": 0.05654761904761905,
+            "probabilityOfConversion": 0.021577380952380952,
+            "probabilityOfConversionGivenClicked": 0.381578947368421
+        },
+        "Monday_16": {
+            "groupSize": 1422,
+            "numberOfClicks": 79,
+            "numberOfConversions": 29,
+            "probabilityOfClick": 0.05555555555555555,
+            "probabilityOfConversion": 0.020393811533052038,
+            "probabilityOfConversionGivenClicked": 0.3670886075949367
+        },
+        "Monday_17": {
+            "groupSize": 1071,
+            "numberOfClicks": 72,
+            "numberOfConversions": 27,
+            "probabilityOfClick": 0.06722689075630252,
+            "probabilityOfConversion": 0.025210084033613446,
+            "probabilityOfConversionGivenClicked": 0.375
+        },
+        "Monday_18": {
+            "groupSize": 619,
+            "numberOfClicks": 47,
+            "numberOfConversions": 19,
+            "probabilityOfClick": 0.07592891760904685,
+            "probabilityOfConversion": 0.030694668820678513,
+            "probabilityOfConversionGivenClicked": 0.40425531914893614
+        },
+        "Monday_19": {
+            "groupSize": 634,
+            "numberOfClicks": 54,
+            "numberOfConversions": 25,
+            "probabilityOfClick": 0.08517350157728706,
+            "probabilityOfConversion": 0.03943217665615142,
+            "probabilityOfConversionGivenClicked": 0.46296296296296297
+        },
+        "Thursday_08": {
+            "groupSize": 3170,
+            "numberOfClicks": 113,
+            "numberOfConversions": 58,
+            "probabilityOfClick": 0.03564668769716088,
+            "probabilityOfConversion": 0.01829652996845426,
+            "probabilityOfConversionGivenClicked": 0.5132743362831859
+        },
+        "Thursday_09": {
+            "groupSize": 7573,
+            "numberOfClicks": 519,
+            "numberOfConversions": 166,
+            "probabilityOfClick": 0.06853294599234121,
+            "probabilityOfConversion": 0.02191997887230952,
+            "probabilityOfConversionGivenClicked": 0.3198458574181118
+        },
+        "Thursday_10": {
+            "groupSize": 7527,
+            "numberOfClicks": 465,
+            "numberOfConversions": 159,
+            "probabilityOfClick": 0.061777600637704266,
+            "probabilityOfConversion": 0.021123953766440814,
+            "probabilityOfConversionGivenClicked": 0.3419354838709678
+        },
+        "Thursday_11": {
+            "groupSize": 5438,
+            "numberOfClicks": 448,
+            "numberOfConversions": 145,
+            "probabilityOfClick": 0.08238322912835601,
+            "probabilityOfConversion": 0.02666421478484737,
+            "probabilityOfConversionGivenClicked": 0.3236607142857143
+        },
+        "Thursday_12": {
+            "groupSize": 1391,
+            "numberOfClicks": 93,
+            "numberOfConversions": 26,
+            "probabilityOfClick": 0.06685837526959022,
+            "probabilityOfConversion": 0.018691588785046728,
+            "probabilityOfConversionGivenClicked": 0.27956989247311825
+        },
+        "Thursday_13": {
+            "groupSize": 1408,
+            "numberOfClicks": 85,
+            "numberOfConversions": 23,
+            "probabilityOfClick": 0.060369318181818184,
+            "probabilityOfConversion": 0.016335227272727272,
+            "probabilityOfConversionGivenClicked": 0.27058823529411763
+        },
+        "Thursday_14": {
+            "groupSize": 1360,
+            "numberOfClicks": 77,
+            "numberOfConversions": 29,
+            "probabilityOfClick": 0.05661764705882353,
+            "probabilityOfConversion": 0.021323529411764706,
+            "probabilityOfConversionGivenClicked": 0.37662337662337664
+        },
+        "Thursday_15": {
+            "groupSize": 1323,
+            "numberOfClicks": 88,
+            "numberOfConversions": 33,
+            "probabilityOfClick": 0.06651549508692366,
+            "probabilityOfConversion": 0.024943310657596373,
+            "probabilityOfConversionGivenClicked": 0.375
+        },
+        "Thursday_16": {
+            "groupSize": 1388,
+            "numberOfClicks": 91,
+            "numberOfConversions": 33,
+            "probabilityOfClick": 0.06556195965417867,
+            "probabilityOfConversion": 0.02377521613832853,
+            "probabilityOfConversionGivenClicked": 0.3626373626373627
+        },
+        "Thursday_17": {
+            "groupSize": 1049,
+            "numberOfClicks": 55,
+            "numberOfConversions": 26,
+            "probabilityOfClick": 0.052430886558627265,
+            "probabilityOfConversion": 0.02478551000953289,
+            "probabilityOfConversionGivenClicked": 0.4727272727272727
+        },
+        "Thursday_18": {
+            "groupSize": 623,
+            "numberOfClicks": 52,
+            "numberOfConversions": 28,
+            "probabilityOfClick": 0.08346709470304976,
+            "probabilityOfConversion": 0.0449438202247191,
+            "probabilityOfConversionGivenClicked": 0.5384615384615384
+        },
+        "Thursday_19": {
+            "groupSize": 613,
+            "numberOfClicks": 45,
+            "numberOfConversions": 22,
+            "probabilityOfClick": 0.0734094616639478,
+            "probabilityOfConversion": 0.03588907014681892,
+            "probabilityOfConversionGivenClicked": 0.4888888888888889
+        },
+        "Tuesday_08": {
+            "groupSize": 3254,
+            "numberOfClicks": 102,
+            "numberOfConversions": 42,
+            "probabilityOfClick": 0.0313460356484327,
+            "probabilityOfConversion": 0.01290719114935464,
+            "probabilityOfConversionGivenClicked": 0.4117647058823529
+        },
+        "Tuesday_09": {
+            "groupSize": 7803,
+            "numberOfClicks": 493,
+            "numberOfConversions": 155,
+            "probabilityOfClick": 0.06318082788671024,
+            "probabilityOfConversion": 0.0198641548122517,
+            "probabilityOfConversionGivenClicked": 0.3144016227180527
+        },
+        "Tuesday_10": {
+            "groupSize": 7520,
+            "numberOfClicks": 516,
+            "numberOfConversions": 175,
+            "probabilityOfClick": 0.06861702127659575,
+            "probabilityOfConversion": 0.02327127659574468,
+            "probabilityOfConversionGivenClicked": 0.3391472868217054
+        },
+        "Tuesday_11": {
+            "groupSize": 5442,
+            "numberOfClicks": 468,
+            "numberOfConversions": 143,
+            "probabilityOfClick": 0.08599779492833518,
+            "probabilityOfConversion": 0.02627710400588019,
+            "probabilityOfConversionGivenClicked": 0.3055555555555555
+        },
+        "Tuesday_12": {
+            "groupSize": 1372,
+            "numberOfClicks": 101,
+            "numberOfConversions": 35,
+            "probabilityOfClick": 0.07361516034985423,
+            "probabilityOfConversion": 0.025510204081632654,
+            "probabilityOfConversionGivenClicked": 0.34653465346534656
+        },
+        "Tuesday_13": {
+            "groupSize": 1412,
+            "numberOfClicks": 86,
+            "numberOfConversions": 20,
+            "probabilityOfClick": 0.060906515580736544,
+            "probabilityOfConversion": 0.014164305949008499,
+            "probabilityOfConversionGivenClicked": 0.23255813953488372
+        },
+        "Tuesday_14": {
+            "groupSize": 1369,
+            "numberOfClicks": 84,
+            "numberOfConversions": 22,
+            "probabilityOfClick": 0.061358655953250546,
+            "probabilityOfConversion": 0.016070124178232285,
+            "probabilityOfConversionGivenClicked": 0.26190476190476186
+        },
+        "Tuesday_15": {
+            "groupSize": 1349,
+            "numberOfClicks": 81,
+            "numberOfConversions": 36,
+            "probabilityOfClick": 0.060044477390659746,
+            "probabilityOfConversion": 0.026686434395848776,
+            "probabilityOfConversionGivenClicked": 0.4444444444444444
+        },
+        "Tuesday_16": {
+            "groupSize": 1399,
+            "numberOfClicks": 84,
+            "numberOfConversions": 33,
+            "probabilityOfClick": 0.06004288777698356,
+            "probabilityOfConversion": 0.023588277340957826,
+            "probabilityOfConversionGivenClicked": 0.39285714285714285
+        },
+        "Tuesday_17": {
+            "groupSize": 1046,
+            "numberOfClicks": 58,
+            "numberOfConversions": 17,
+            "probabilityOfClick": 0.055449330783938815,
+            "probabilityOfConversion": 0.016252390057361378,
+            "probabilityOfConversionGivenClicked": 0.2931034482758621
+        },
+        "Tuesday_18": {
+            "groupSize": 633,
+            "numberOfClicks": 53,
+            "numberOfConversions": 23,
+            "probabilityOfClick": 0.08372827804107424,
+            "probabilityOfConversion": 0.036334913112164295,
+            "probabilityOfConversionGivenClicked": 0.4339622641509434
+        },
+        "Tuesday_19": {
+            "groupSize": 569,
+            "numberOfClicks": 41,
+            "numberOfConversions": 15,
+            "probabilityOfClick": 0.07205623901581722,
+            "probabilityOfConversion": 0.026362038664323375,
+            "probabilityOfConversionGivenClicked": 0.3658536585365854
+        },
+        "Wednesday_08": {
+            "groupSize": 3150,
+            "numberOfClicks": 104,
+            "numberOfConversions": 45,
+            "probabilityOfClick": 0.03301587301587302,
+            "probabilityOfConversion": 0.014285714285714285,
+            "probabilityOfConversionGivenClicked": 0.43269230769230765
+        },
+        "Wednesday_09": {
+            "groupSize": 7679,
+            "numberOfClicks": 470,
+            "numberOfConversions": 146,
+            "probabilityOfClick": 0.061205886183096754,
+            "probabilityOfConversion": 0.019012892303685375,
+            "probabilityOfConversionGivenClicked": 0.31063829787234043
+        },
+        "Wednesday_10": {
+            "groupSize": 7652,
+            "numberOfClicks": 519,
+            "numberOfConversions": 169,
+            "probabilityOfClick": 0.0678254051228437,
+            "probabilityOfConversion": 0.022085729221118663,
+            "probabilityOfConversionGivenClicked": 0.325626204238921
+        },
+        "Wednesday_11": {
+            "groupSize": 5477,
+            "numberOfClicks": 454,
+            "numberOfConversions": 120,
+            "probabilityOfClick": 0.08289209421215994,
+            "probabilityOfConversion": 0.021909804637575313,
+            "probabilityOfConversionGivenClicked": 0.2643171806167401
+        },
+        "Wednesday_12": {
+            "groupSize": 1332,
+            "numberOfClicks": 79,
+            "numberOfConversions": 26,
+            "probabilityOfClick": 0.05930930930930931,
+            "probabilityOfConversion": 0.01951951951951952,
+            "probabilityOfConversionGivenClicked": 0.3291139240506329
+        },
+        "Wednesday_13": {
+            "groupSize": 1360,
+            "numberOfClicks": 65,
+            "numberOfConversions": 25,
+            "probabilityOfClick": 0.04779411764705882,
+            "probabilityOfConversion": 0.01838235294117647,
+            "probabilityOfConversionGivenClicked": 0.38461538461538464
+        },
+        "Wednesday_14": {
+            "groupSize": 1399,
+            "numberOfClicks": 89,
+            "numberOfConversions": 41,
+            "probabilityOfClick": 0.0636168691922802,
+            "probabilityOfConversion": 0.029306647605432452,
+            "probabilityOfConversionGivenClicked": 0.4606741573033708
+        },
+        "Wednesday_15": {
+            "groupSize": 1307,
+            "numberOfClicks": 74,
+            "numberOfConversions": 16,
+            "probabilityOfClick": 0.056618209640397855,
+            "probabilityOfConversion": 0.01224177505738332,
+            "probabilityOfConversionGivenClicked": 0.21621621621621623
+        },
+        "Wednesday_16": {
+            "groupSize": 1315,
+            "numberOfClicks": 76,
+            "numberOfConversions": 27,
+            "probabilityOfClick": 0.05779467680608365,
+            "probabilityOfConversion": 0.02053231939163498,
+            "probabilityOfConversionGivenClicked": 0.3552631578947369
+        },
+        "Wednesday_17": {
+            "groupSize": 1008,
+            "numberOfClicks": 64,
+            "numberOfConversions": 19,
+            "probabilityOfClick": 0.06349206349206349,
+            "probabilityOfConversion": 0.018849206349206348,
+            "probabilityOfConversionGivenClicked": 0.296875
+        },
+        "Wednesday_18": {
+            "groupSize": 679,
+            "numberOfClicks": 55,
+            "numberOfConversions": 22,
+            "probabilityOfClick": 0.08100147275405008,
+            "probabilityOfConversion": 0.03240058910162003,
+            "probabilityOfConversionGivenClicked": 0.4
+        },
+        "Wednesday_19": {
+            "groupSize": 631,
+            "numberOfClicks": 61,
+            "numberOfConversions": 23,
+            "probabilityOfClick": 0.09667194928684628,
+            "probabilityOfConversion": 0.03645007923930269,
+            "probabilityOfConversionGivenClicked": 0.3770491803278688
+        }
+    }
+}

@@ -36,11 +36,47 @@ def getRawData():
 
     return (clients, customers, messages) 
 
-def getDataQuality(clients, customers, messages): 
+def getNullValues(dataframes): 
+    """
+    Returns the number of null values in each field 
+    of each of the given dataframes
+    """
 
-    size = clients.shape[0]
-    numberOfNonNullValues = clients.notnull().sum()
-    numberOfNullValues = clients.isnull().sum()
+    # Get null values by dataframe name then by field name 
+    nullValues = {}
+
+    for dataframeName in dataframes:
+
+        dataframe = dataframes[dataframeName]
+
+        nullValuesInDataframe = {}
+
+        for fieldName in dataframe:
+
+            nullValuesInField = {}
+
+            size = dataframe.shape[0]
+            nullValueCount = dataframe[fieldName].isnull().sum()
+            nonNullValueCount = dataframe[fieldName].notnull().sum()
+
+            # Get the probability of a null value in the given field 
+            probabilityOfNull = (nullValueCount / size)
+
+            nullValuesInField["size"] = size
+            nullValuesInField["nullValues"] = nullValueCount
+            nullValuesInField["nonNullValues"] = nonNullValueCount
+
+            nullValuesInField["probabilityOfNull"] = probabilityOfNull
+
+            nullValuesInDataframe[fieldName] = nullValuesInField
+        
+        nullValues[dataframeName] = nullValuesInDataframe
+    
+    with open("./output/nullValues.json", "w") as nullValuesJson:
+
+        json.dump(nullValues, nullValuesJson, default = int64Encoder, indent = 4)
+    
+    return nullValues
 
 def getCustomerGroups(customers): 
 
@@ -59,6 +95,17 @@ def getCustomerGroups(customers):
         json.dump(customerGroups, customerGroupsJson, indent = 4) 
 
     return customerGroups
+
+def int64Encoder(object): 
+    """
+    Returns the given numpy int64 instance as an integer for JSON supported output
+    """
+
+    if isinstance(object, numpy.int64):
+
+        return int(object)
+    else:
+        raise TypeError(f"The given object {object} is not supported by JSON")
 
 def getMessageGroups(messages): 
 
@@ -121,16 +168,74 @@ def getMessagesWithSentDayTime(messages):
     # Get the days between the customer creation date and the message date 
     messages["customerCreatedToMessageSentDays"] = (messages["messageSentAtDateTime"] - messages["customerCreatedAtDateTime"]).dt.days
 
+    # Get the message time window based on the day of the week and the hour of the day 
+    # Messages in the same time window will be sent at the same day of week and hour of day 
+    messages["messageTimeWindow"] = messages["messageSentAtDayOfWeek"].astype(str) + "_" + messages["messageSentAtHour"].astype(str).str.zfill(2)
+
     # Output summary stats 
     messages.describe().to_csv("./output/messagesWithSentDateTimeSummary.csv")
     
     return messages
 
+def getMessageProbabilities(messages, groupFieldNames):
+    """
+    Returns the probability of click and probability of conversion 
+    of messages grouped by each of the given fields
+    """
+
+    # Get probabilities of clicks and conversions by field value 
+    messageProbabilities = {}
+
+    for groupFieldName in groupFieldNames:
+
+        messageFieldProbabilities = {}
+
+        messageGroups = messages.groupby(groupFieldName)
+
+        # Group messages by the value of the given field 
+        for fieldValue, messageGroup in messageGroups:
+
+            messageFieldValueProbabilities = {}
+            
+            groupSize = messageGroup.shape[0]
+
+            numberOfClicks = messageGroup["messageClicked"].sum()
+            numberOfConversions = messageGroup["messageConverted"].sum()
+
+            probabilityOfClick = (numberOfClicks / groupSize)
+            probabilityOfConversion = (numberOfConversions / groupSize)
+
+            probabilityOfConversionGivenClicked = (probabilityOfConversion / probabilityOfClick)
+
+            messageFieldValueProbabilities["groupSize"] = groupSize
+
+            messageFieldValueProbabilities["numberOfClicks"] = numberOfClicks
+            messageFieldValueProbabilities["numberOfConversions"] = numberOfConversions
+
+            messageFieldValueProbabilities["probabilityOfClick"] = probabilityOfClick
+            messageFieldValueProbabilities["probabilityOfConversion"] = probabilityOfConversion
+
+            messageFieldValueProbabilities["probabilityOfConversionGivenClicked"] = probabilityOfConversionGivenClicked
+
+            messageFieldProbabilities[fieldValue] = messageFieldValueProbabilities
+
+        messageProbabilities[groupFieldName] = messageFieldProbabilities
+    
+    with open("./output/messageProbabilities.json", "w") as messageProbabilitiesJson:
+
+        json.dump(messageProbabilities, messageProbabilitiesJson, 
+        default = int64Encoder, indent = 4, sort_keys = True)
+    
+    return messageProbabilities
+
+
+
 def main(): 
 
     (clients, customers, messages) = getRawData() 
 
-    getDataQuality(clients, customers, messages) 
+    getNullValues({"clients" : clients, 
+    "customers" : customers, "messages" : messages}) 
 
     customerGroups = getCustomerGroups(customers) 
 
@@ -141,5 +246,8 @@ def main():
     messagesWithSentDayTime = getMessagesWithSentDayTime(messagesJoinedToCustomers)
 
     messageGroups = getMessageGroups(messagesWithSentDayTime)
+
+    messageProbabilities = getMessageProbabilities(messagesWithSentDayTime, 
+    ["messageSentAtDayOfWeek", "messageSentAtHour", "messageTimeWindow"])
 
 main() 

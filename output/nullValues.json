@@ -1,0 +1,98 @@
+{
+    "clients": {
+        "clientId": {
+            "size": 8,
+            "nullValues": 0,
+            "nonNullValues": 8,
+            "probabilityOfNull": 0.0
+        },
+        "clientName": {
+            "size": 8,
+            "nullValues": 0,
+            "nonNullValues": 8,
+            "probabilityOfNull": 0.0
+        },
+        "clientProductType": {
+            "size": 8,
+            "nullValues": 0,
+            "nonNullValues": 8,
+            "probabilityOfNull": 0.0
+        },
+        "clientCountry": {
+            "size": 8,
+            "nullValues": 0,
+            "nonNullValues": 8,
+            "probabilityOfNull": 0.0
+        }
+    },
+    "customers": {
+        "customerId": {
+            "size": 10000,
+            "nullValues": 0,
+            "nonNullValues": 10000,
+            "probabilityOfNull": 0.0
+        },
+        "clientId": {
+            "size": 10000,
+            "nullValues": 0,
+            "nonNullValues": 10000,
+            "probabilityOfNull": 0.0
+        },
+        "customerGender": {
+            "size": 10000,
+            "nullValues": 2021,
+            "nonNullValues": 7979,
+            "probabilityOfNull": 0.2021
+        },
+        "customerCountry": {
+            "size": 10000,
+            "nullValues": 1942,
+            "nonNullValues": 8058,
+            "probabilityOfNull": 0.1942
+        },
+        "customerAge": {
+            "size": 10000,
+            "nullValues": 1425,
+            "nonNullValues": 8575,
+            "probabilityOfNull": 0.1425
+        },
+        "customerCreatedAt": {
+            "size": 10000,
+            "nullValues": 0,
+            "nonNullValues": 10000,
+            "probabilityOfNull": 0.0
+        }
+    },
+    "messages": {
+        "messageId": {
+            "size": 145941,
+            "nullValues": 0,
+            "nonNullValues": 145941,
+            "probabilityOfNull": 0.0
+        },
+        "customerId": {
+            "size": 145941,
+            "nullValues": 0,
+            "nonNullValues": 145941,
+            "probabilityOfNull": 0.0
+        },
+        "messageSentAt": {
+            "size": 145941,
+            "nullValues": 0,
+            "nonNullValues": 145941,
+            "probabilityOfNull": 0.0
+        },
+        "messageClicked": {
+            "size": 145941,
+            "nullValues": 0,
+            "nonNullValues": 145941,
+            "probabilityOfNull": 0.0
+        },
+        "messageConverted": {
+            "size": 145941,
+            "nullValues": 0,
+            "nonNullValues": 145941,
+            "probabilityOfNull": 0.0
+        }
+    }
+}
