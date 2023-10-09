@@ -1,5 +1,4 @@
 
-from numpy.random import sample
 import pandas 
 import numpy 
 import matplotlib 
@@ -487,7 +486,6 @@ def getCollaborativeFilteringRecommendations(meanRatings, convertedRating, sampl
 
     # Get the test accuracy 
     rmse = surprise.accuracy.rmse(messagePredictions)
-    print(f"RMSE: {rmse}")
 
     # Get the best message time windows by customer ID 
     bestMessageTimeWindows = {}
