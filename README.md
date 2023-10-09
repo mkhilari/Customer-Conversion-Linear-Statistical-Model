@@ -1,4 +1,4 @@
-# Customer Conversion Linear Statistical Model 
+# Customer Conversion Recommender Model 
 
 Specification by InDebted 
 
