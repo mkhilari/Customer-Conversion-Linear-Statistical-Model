@@ -1,9 +1,13 @@
 
+from numpy.random import sample
 import pandas 
 import numpy 
 import matplotlib 
 
 import json
+import datetime
+
+import surprise
 
 def getRawData(): 
     """
@@ -83,7 +87,8 @@ def getCustomerGroups(customers):
     customerGroups = {}
 
     # Get the customer groups represented by distinct values for each attribute 
-    for customerAttribute in ["customerGender", "customerCountry", "customerAge"]: 
+    for customerAttribute in ["customerGender", "customerCountry", 
+    "customerAge", "clientProductType", "clientCountry"]: 
 
         group = customers.groupby(customerAttribute).size()
 
@@ -177,6 +182,17 @@ def getMessagesWithSentDayTime(messages):
     
     return messages
 
+def getMessagesWithRatings(messages, convertedRating): 
+    """
+    Returns the messages with ratings based on clicks and conversions 
+    """
+
+    # Set the rating of clicked only messages to 1, 
+    # and the rating of converted messages to the given converted rating 
+    messages["messageRating"] = messages["messageClicked"] + (convertedRating - 1) * messages["messageConverted"]
+
+    return messages
+
 def getMessageProbabilities(messages, groupFieldNames):
     """
     Returns the probability of click and probability of conversion 
@@ -228,7 +244,284 @@ def getMessageProbabilities(messages, groupFieldNames):
     
     return messageProbabilities
 
+def getSampleCustomers(customers): 
+    """
+    Returns the sample customers joined to the customers dataset 
+    """
 
+    sampleCustomerIds = pandas.read_csv("./data/raw/sample_customer_ids.csv")
+
+    # Rename columns 
+    sampleCustomerIds = sampleCustomerIds.rename(
+        columns = {"customer_id" : "customerId"})
+
+    sampleCustomers = pandas.merge(sampleCustomerIds, customers, on = "customerId", how = "left")
+
+    # Set customerId as the index for the dataframe 
+    sampleCustomers.set_index("customerId", inplace = True)
+
+    return sampleCustomers
+
+def getCustomerMeanRatingsForMessageTimeWindows(messages):
+    """
+    Returns the mean rating given by each user to each message time window
+    """
+
+    # Group messages by customer ID then by message time window 
+    customerIdMessageGroups = messages.groupby("customerId")
+
+    meanRatings = {}
+
+    for customerId, customerIdMessageGroup in customerIdMessageGroups:
+
+        customerIdTimeWindowMessageGroups = customerIdMessageGroup.groupby("messageTimeWindow")
+
+        customerIdMeanRatings = {}
+
+        for messageTimeWindow, customerIdTimeWindowMessageGroup in customerIdTimeWindowMessageGroups:
+
+            customerIdTimeWindowMeanRatings = {}
+
+            groupSize = customerIdTimeWindowMessageGroup.shape[0]
+            meanRating = customerIdTimeWindowMessageGroup["messageRating"].mean()
+            
+            customerIdTimeWindowMeanRatings["groupSize"] = groupSize
+            customerIdTimeWindowMeanRatings["meanRating"] = meanRating
+
+            customerIdMeanRatings[messageTimeWindow] = customerIdTimeWindowMeanRatings
+        
+        meanRatings[customerId] = customerIdMeanRatings
+
+    with open("./output/meanRatings.json", "w") as meanRatingsJson:
+
+        json.dump(meanRatings, meanRatingsJson, 
+        default = int64Encoder, indent = 4, sort_keys = True)
+    
+    return meanRatings 
+
+def getDateTime(sampleCustomers, customerId, customerTimeWindow):
+
+    """
+    Returns the date time representation of the given time window, 
+    considering the compliant times of the customer country
+    """
+
+    # Convert the predicted hours to compliant hours by country 
+    compliantHours = {
+
+        # Canada 9am to 5pm 
+        "CA" : {
+            "00" : "09",
+            "01" : "09",
+            "02" : "09",
+            "03" : "09",
+            "04" : "09",
+            "05" : "09",
+            "06" : "09",
+            "07" : "09",
+            "08" : "09",
+            "09" : "09",
+            "10" : "10",
+            "11" : "11",
+            "12" : "12",
+            "13" : "13",
+            "14" : "14",
+            "15" : "15",
+            "16" : "16",
+            "17" : "17",
+            "18" : "17",
+            "19" : "17",
+            "20" : "17",
+            "21" : "17",
+            "22" : "17",
+            "23" : "17",
+            "24" : "17"
+        }, 
+
+        # New Zealand 9am to 6pm 
+        "NZ" : {
+            "00" : "09",
+            "01" : "09",
+            "02" : "09",
+            "03" : "09",
+            "04" : "09",
+            "05" : "09",
+            "06" : "09",
+            "07" : "09",
+            "08" : "09",
+            "09" : "09",
+            "10" : "10",
+            "11" : "11",
+            "12" : "12",
+            "13" : "13",
+            "14" : "14",
+            "15" : "15",
+            "16" : "16",
+            "17" : "17",
+            "18" : "18",
+            "19" : "18",
+            "20" : "18",
+            "21" : "18",
+            "22" : "18",
+            "23" : "18",
+            "24" : "18"
+        }, 
+
+        # UK 8am to 8pm 
+        "UK" : {
+            "00" : "08",
+            "01" : "08",
+            "02" : "08",
+            "03" : "08",
+            "04" : "08",
+            "05" : "08",
+            "06" : "08",
+            "07" : "08",
+            "08" : "08",
+            "09" : "09",
+            "10" : "10",
+            "11" : "11",
+            "12" : "12",
+            "13" : "13",
+            "14" : "14",
+            "15" : "15",
+            "16" : "16",
+            "17" : "17",
+            "18" : "18",
+            "19" : "19",
+            "20" : "20",
+            "21" : "20",
+            "22" : "20",
+            "23" : "20",
+            "24" : "20"
+        }
+    }
+
+    # Convert the predicted days of the week to days within the date range 4 to 10 October 2021 
+    compliantDates = {
+        "Monday" : "2021-10-04", 
+        "Tuesday" : "2021-10-05", 
+        "Wednesday" : "2021-10-06", 
+        "Thursday" : "2021-10-07", 
+        "Friday" : "2021-10-08"
+    }
+
+    customerTimeWindowParts = customerTimeWindow.split("_")
+
+    (customerTimeWindowDayOfWeek, customerTimeWindowHour) = (
+        customerTimeWindowParts[0], customerTimeWindowParts[1])
+
+    customerCountry = sampleCustomers.loc[customerId, "customerCountry"]
+
+    # If the customer country is not present, use the client country 
+    if pandas.isna(customerCountry):
+
+        customerCountry = sampleCustomers.loc[customerId, "clientCountry"]
+
+    compliantDate = compliantDates[customerTimeWindowDayOfWeek]
+
+    compliantDateParts = compliantDate.split("-")
+
+    # Remove leading zeros and convert to integers 
+    (compliantYear, compliantMonth, compliantDay) = (
+        int(compliantDateParts[0].lstrip("0")), 
+        int(compliantDateParts[1].lstrip("0")), 
+        int(compliantDateParts[2].lstrip("0"))
+    )
+    
+    compliantHour = int(compliantHours[customerCountry][customerTimeWindowHour].lstrip("0"))
+
+    compliantDateTime = datetime.datetime(
+        year = compliantYear, 
+        month = compliantMonth, 
+        day = compliantDay, 
+        hour = compliantHour, 
+        minute = 0, 
+        second = 0, 
+        microsecond = 0
+    )
+
+    # Convert the datetime to a string format 
+    compliantDateTimeString = compliantDateTime.strftime("%Y-%m-%d %H:%M:%S.%f+00:00")
+
+    return compliantDateTimeString
+
+def getCollaborativeFilteringRecommendations(meanRatings, convertedRating, sampleCustomers, recommendationsPerCustomer):
+    """
+    Returns the collaborative filtering recommendations for the given customer IDs 
+    """
+
+    ratingReader = surprise.Reader(rating_scale = (1, convertedRating))
+
+    # Convert the mean ratings to a dataset of (customerId, messageTimeWindow, meanRating)
+    meanRatingsData = {"customerId" : [], "messageTimeWindow" : [], "meanRating" : []}
+
+    for customerId in meanRatings:
+
+        customerMeanRatings = meanRatings[customerId]
+
+        for messageTimeWindow in customerMeanRatings:
+
+            customerMessageTimeWindowMeanRatings = customerMeanRatings[messageTimeWindow]
+
+            meanRating = customerMessageTimeWindowMeanRatings["meanRating"]
+
+            meanRatingsData["customerId"].append(customerId)
+            meanRatingsData["messageTimeWindow"].append(messageTimeWindow)
+            meanRatingsData["meanRating"].append(meanRating)
+
+    meanRatingsDataFrame = pandas.DataFrame(meanRatingsData)
+
+    ratingDataset = surprise.Dataset.load_from_df(meanRatingsDataFrame, ratingReader)
+
+    # Split the rating data into 80% training and 20% testing datasets 
+    # Set the random seed for reproducibility 
+    (trainingDataset, testingDataset) = surprise.model_selection.train_test_split(ratingDataset, test_size = 0.2, random_state = 7)
+
+    # Select the k nearest neighbours collaborative filtering model 
+    recommenderModel = surprise.SVD()
+
+    recommenderModel.fit(trainingDataset)
+
+    messagePredictions = recommenderModel.test(testingDataset)
+
+    # Get the test accuracy 
+    rmse = surprise.accuracy.rmse(messagePredictions)
+    print(f"RMSE: {rmse}")
+
+    # Get the best message time windows by customer ID 
+    bestMessageTimeWindows = {}
+
+    messageTimeWindows = trainingDataset.all_items()
+
+    for customerId in sampleCustomers.index:
+
+        # Get message time windows by rating descending 
+        messagePredictions = [(messageTimeWindow, 
+
+        # Get the predicted rating for the (customerId, messageTimeWindow) combination 
+        recommenderModel.predict(customerId, trainingDataset.to_raw_iid(messageTimeWindow)).est) 
+        for messageTimeWindow in messageTimeWindows]
+
+        messagePredictions.sort(key = lambda messagePrediction : messagePrediction[1], reverse = True)
+
+        # Get up to the given recommendations per customer 
+        customerTimeWindows = [trainingDataset.to_raw_iid(messagePredictions[i][0]) 
+        for i in range(min(recommendationsPerCustomer, len(messagePredictions)))]
+
+        bestMessageTimeWindows[customerId] = [
+            {
+                "messageTimeWindow" : customerTimeWindow, 
+                "messageDateTime" : getDateTime(sampleCustomers, customerId, customerTimeWindow)
+            } 
+            for customerTimeWindow in customerTimeWindows]
+
+    with open("./output/bestMessageTimeWindows.json", "w") as bestMessageTimeWindowsJson:
+
+        json.dump(bestMessageTimeWindows, bestMessageTimeWindowsJson, 
+        default = int64Encoder, indent = 4, sort_keys = True)
+    
+    return bestMessageTimeWindows
 
 def main(): 
 
@@ -237,9 +530,9 @@ def main():
     getNullValues({"clients" : clients, 
     "customers" : customers, "messages" : messages}) 
 
-    customerGroups = getCustomerGroups(customers) 
-
     customersJoinedToClients = getCustomersJoinedToClients(customers, clients) 
+
+    customerGroups = getCustomerGroups(customersJoinedToClients) 
 
     messagesJoinedToCustomers = getMessagesJoinedToCustomers(messages, customersJoinedToClients) 
 
@@ -249,5 +542,15 @@ def main():
 
     messageProbabilities = getMessageProbabilities(messagesWithSentDayTime, 
     ["messageSentAtDayOfWeek", "messageSentAtHour", "messageTimeWindow"])
+
+    convertedRating = 5
+
+    messagesWithRatings = getMessagesWithRatings(messagesWithSentDayTime, convertedRating)
+
+    sampleCustomers = getSampleCustomers(customersJoinedToClients)
+
+    meanRatings = getCustomerMeanRatingsForMessageTimeWindows(messagesWithRatings)
+
+    bestMessageTimeWindows = getCollaborativeFilteringRecommendations(meanRatings, convertedRating, sampleCustomers, recommendationsPerCustomer = 3)
 
 main() 

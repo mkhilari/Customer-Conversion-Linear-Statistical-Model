@@ -88,5 +88,15 @@
         "94.0": 4,
         "95.0": 7,
         "96.0": 1
+    },
+    "clientProductType": {
+        "BNPL": 5444,
+        "CreditCard": 2396,
+        "Energy": 2160
+    },
+    "clientCountry": {
+        "CA": 2647,
+        "NZ": 1951,
+        "UK": 5402
     }
 }
