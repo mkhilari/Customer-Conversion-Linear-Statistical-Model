@@ -2,6 +2,8 @@
 
 Manish Khilari 
 
+https://github.com/mkhilari/Customer-Conversion-Linear-Statistical-Model
+
 ## Introduction 
 
 Welcome to the Customer Conversion Recommender Model. 
