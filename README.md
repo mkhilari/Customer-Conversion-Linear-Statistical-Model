@@ -2,8 +2,6 @@
 
 Manish Khilari 
 
-7 October 2022 
-
 ## Introduction 
 
 Welcome to the Customer Conversion Recommender Model. 
